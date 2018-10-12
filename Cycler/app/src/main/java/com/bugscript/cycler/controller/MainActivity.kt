@@ -3,6 +3,7 @@ package com.bugscript.cycler.controller
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.bugscript.cycler.R
 import com.bugscript.cycler.adapters.CategoryAdapter
 import com.bugscript.cycler.model.Category
@@ -21,5 +22,10 @@ class MainActivity : AppCompatActivity() {
                 DataService.categories)
 
         CategoryListView.adapter = adapter
+//
+//        CategoryListView.setOnItemClickListener { adapterView, view, i, l ->
+//            val category = DataService.categories[i]
+//            Toast.makeText(this, "You just clicked on ${category.title}",Toast.LENGTH_LONG).show()
+//        }
     }
 }
