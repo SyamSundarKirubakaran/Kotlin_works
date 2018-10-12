@@ -6,10 +6,10 @@ import com.bugscript.cycler.model.Product
 object DataService {
 
     val categories = listOf(
-            Category("Shirt","shirtImage"),
-            Category("Hoodies","hoodyImage"),
-            Category("Hats","hatsImage"),
-            Category("Digital","digitalImage")
+            Category("Shirt","shirtimage"),
+            Category("Hoodies","hoodieimage"),
+            Category("Hats","hatimage"),
+            Category("Digital","digitalgoodsimage")
     )
 
     val hats = listOf(
