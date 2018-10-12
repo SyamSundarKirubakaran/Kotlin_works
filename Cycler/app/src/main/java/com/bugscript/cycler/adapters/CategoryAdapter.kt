@@ -12,10 +12,7 @@ import com.bugscript.cycler.R.id.categoryImage
 import com.bugscript.cycler.R.id.categoryName
 import com.bugscript.cycler.model.Category
 
-class CategoryAdapter(context : Context, category : List<Category>) : BaseAdapter(){
-
-    val category = category
-    val context = context
+class CategoryAdapter(val context : Context, val category : List<Category>) : BaseAdapter(){
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val categoryView : View
