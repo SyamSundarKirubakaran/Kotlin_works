@@ -10,11 +10,11 @@ import android.widget.TextView
 import com.bugscript.cycler.R
 import com.bugscript.cycler.model.Category
 
-class CategoryRecyclerAdapter(val context : Context , val categories : List<Category>) : RecyclerView.Adapter<CategoryRecyclerAdapter.Holder>() {
+class CategoryRecyclerAdapter(val context : Context , val categories : List<Category>, val itemClick : (Category) -> Unit) : RecyclerView.Adapter<CategoryRecyclerAdapter.Holder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.category_list_item,p0,false)
-        return Holder(view)
+        return Holder(view,itemClick)
     }
 
     override fun getItemCount(): Int {
@@ -26,7 +26,7 @@ class CategoryRecyclerAdapter(val context : Context , val categories : List<Cate
     }
 
 
-    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class Holder(itemView: View, val itemClick : (Category) -> Unit) : RecyclerView.ViewHolder(itemView) {
 
         val categoryName = itemView.findViewById<TextView>(R.id.categoryName)
         val categoryImage = itemView.findViewById<ImageView>(R.id.categoryImage)
@@ -35,6 +35,7 @@ class CategoryRecyclerAdapter(val context : Context , val categories : List<Cate
             val resourceId = context.resources.getIdentifier(category.image,"drawable",context.packageName)
             categoryImage?.setImageResource(resourceId)
             categoryName.text = category.title
+            itemView.setOnClickListener { itemClick(category) }
         }
 
     }

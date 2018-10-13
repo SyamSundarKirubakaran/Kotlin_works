@@ -1,11 +1,13 @@
 package com.bugscript.cycler.controller
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.bugscript.cycler.R
+import com.bugscript.cycler.Utilities.EXTRA_CATEGORY
 import com.bugscript.cycler.adapters.CategoryAdapter
 import com.bugscript.cycler.adapters.CategoryRecyclerAdapter
 import com.bugscript.cycler.model.Category
@@ -21,7 +23,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         adapter = CategoryRecyclerAdapter(this,
-                DataService.categories)
+                DataService.categories) { Category ->
+            val productIntent = Intent(this,ProductsActivity::class.java)
+            productIntent.putExtra(EXTRA_CATEGORY, Category.title)
+            startActivity(productIntent)
+        }
 
         CategoryListView.adapter = adapter
 
@@ -29,10 +35,6 @@ class MainActivity : AppCompatActivity() {
         CategoryListView.layoutManager = layoutManager
         CategoryListView.setHasFixedSize(true)
 
-//
-//        CategoryListView.setOnItemClickListener { adapterView, view, i, l ->
-//            val category = DataService.categories[i]
-//            Toast.makeText(this, "You just clicked on ${category.title}",Toast.LENGTH_LONG).show()
-//        }
+
     }
 }
