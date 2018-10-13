@@ -24,10 +24,26 @@ object DataService {
             Product("a","1","hat1"),
             Product("b","2","hat2"),
             Product("c","3","hat3"),
+            Product("d","4","hat4"),
+            Product("a","1","hat1"),
+            Product("b","2","hat2"),
+            Product("c","3","hat3"),
+            Product("d","4","hat4"),
+            Product("a","1","hat1"),
+            Product("b","2","hat2"),
+            Product("c","3","hat3"),
             Product("d","4","hat4")
     )
 
     val hoodies = listOf(
+            Product("e","5","hoodie1"),
+            Product("f","6","hoodie2"),
+            Product("g","7","hoodie3"),
+            Product("h","8","hoodie4"),
+            Product("e","5","hoodie1"),
+            Product("f","6","hoodie2"),
+            Product("g","7","hoodie3"),
+            Product("h","8","hoodie4"),
             Product("e","5","hoodie1"),
             Product("f","6","hoodie2"),
             Product("g","7","hoodie3"),
@@ -38,7 +54,25 @@ object DataService {
             Product("i","9","shirt1"),
             Product("j","10","shirt2"),
             Product("k","11","shirt3"),
+            Product("l","12","shirt4"),
+            Product("i","9","shirt1"),
+            Product("j","10","shirt2"),
+            Product("k","11","shirt3"),
+            Product("l","12","shirt4"),
+            Product("i","9","shirt1"),
+            Product("j","10","shirt2"),
+            Product("k","11","shirt3"),
             Product("l","12","shirt4")
     )
 
+    val digitalGoods = listOf<Product>()
+
+    fun getProducts(category : String) : List<Product>{
+        return when(category){
+            "Shirt" -> return shirts
+            "Hoodies" -> return hoodies
+            "Hats" -> hats
+            else -> digitalGoods
+        }
+    }
 }

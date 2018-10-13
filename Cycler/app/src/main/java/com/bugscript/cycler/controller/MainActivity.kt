@@ -1,8 +1,10 @@
 package com.bugscript.cycler.controller
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -31,9 +33,22 @@ class MainActivity : AppCompatActivity() {
 
         CategoryListView.adapter = adapter
 
-        val layoutManager = LinearLayoutManager(this)
+        val orientation = resources.configuration.orientation
+
+        var spanCount : Int = when(orientation){
+            Configuration.ORIENTATION_PORTRAIT -> 1
+            Configuration.ORIENTATION_LANDSCAPE -> 2
+            else -> 1
+        }
+
+        val screenSize = resources.configuration.screenWidthDp
+
+        if(screenSize>720){
+            spanCount = 3
+        }
+
+        val layoutManager = GridLayoutManager(this,spanCount)
         CategoryListView.layoutManager = layoutManager
-        CategoryListView.setHasFixedSize(true)
 
 
     }
